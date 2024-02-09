@@ -1,0 +1,166 @@
+@import './variables.scss';
+@import './mixins/mixins.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  user-select: none;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0 px;
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(50, 66, 136, 0.1);
+}
+
+// element-ui
+.el-dialog,
+.el-popper,
+.el-message-box {
+  pointer-events: fill;
+}
+
+.el-dialog,
+.el-message-box  {
+  background-color: #3b3b3b;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #4b4b4b #000 #000 #4b4b4b;
+}
+
+.el-message-box .el-message-box__title,
+.el-message-box .el-message-box__content,
+.el-dialog .el-dialog__title,
+.el-form .el-form-item__label,
+.el-radio,
+.el-divider__text
+{
+  color: #eef1f6;
+}
+
+.el-popper[x-placement^='bottom'] {
+  margin-top: 0;
+}
+
+.el-popper .popper__arrow {
+  display: none;
+}
+
+.v-modal {
+  opacity: 0.95;
+  z-index: 1 !important;
+  // pointer-events: none;
+}
+.el-divider__text{
+  background-color: #3b3b3b;
+}

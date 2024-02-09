@@ -1,0 +1,12 @@
+{
+  "token":"",
+  "proxy": {
+    "/api/": {
+      "target": "http://localhost:8764",
+      "pathRewrite": {
+          "^/api": ""
+      },
+      "startsWith": "/"
+    }
+  }
+}

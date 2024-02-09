@@ -1,0 +1,39 @@
+.DS_Store
+node_modules/
+CesiumUnminified/
+# Cesium**
+dist/
+.git/
+.svn/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+**/*.log
+# lib/yfzxgis/dist/demo.html
+
+tests/**/coverage/
+tests/e2e/reports
+selenium-debug.log
+
+# Editor directories and files
+.idea
+.vscode
+.git
+.svn
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.local
+*.zip
+*.iml
+
+package-lock.json
+yarn.lock
+node_modules
+*.7z
+# /packagess
+# !lib/yfzxgis/dist/
+*.mp4
+del-*
+public/Build/
