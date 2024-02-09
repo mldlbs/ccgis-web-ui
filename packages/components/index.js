@@ -3,14 +3,16 @@
  * Gis组件开发
  */
 // import Vue from 'vue'
+import '@/assets/styles/ccgis.scss'
 import { Event } from '../utils/bus'
 
 import GisDialog from './GisDialog'
 import GisDialogList from './GisDialogList'
 import GisSvgIcon from './GisSvgIcon'
+import GisFeature from './GisFeature'
 
 const components = [
-  GisDialogList, GisSvgIcon
+  GisDialogList, GisSvgIcon, GisFeature
 ]
 const install = (Vue, options) => {
   components.forEach((it) => {
@@ -23,6 +25,4 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-// const GisWebUi =
-
-export { install, Event, GisDialog, GisDialogList, GisSvgIcon }
+export const GisWebUi = { install, Event, GisDialog, GisDialogList, GisSvgIcon, GisFeature }

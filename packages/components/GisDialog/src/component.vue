@@ -1,18 +1,17 @@
 <template>
   <transition name="dialog-fade">
-    <div v-show="visible" v-drag="compData.drag.enabled" class="ccgis-dialog" :style="style">
+    <div v-show="visible" v-drag="config.drag.enabled" class="ccgis-dialog" :style="style">
       <div class="ccgis-dialog__wrapper">
-        <div :key="compData.id" ref="dialog" role="dialog" aria-modal="true" :aria-label="compData.title || 'dialog'">
-          <div v-show="tp.header || true" class="ccgis-dialog__header">
-            <span>{{ tp }}</span>
+        <div :key="config.id" ref="dialog" role="dialog" aria-modal="true" :aria-label="config.title || 'dialog'">
+          <div v-show="tp.header" class="ccgis-dialog__header">
             <span class="ccgis-dialog__icon"> <svg-icon slot="prefix" icon-class="资源" class="el-input__icon input-icon" /></span>
-            <span v-if="tp.title" class="ccgis-dialog__title">{{ compData.title }}</span>
+            <span v-if="tp.title" class="ccgis-dialog__title">{{ config.title }}</span>
             <span v-if="tp.close" class="ccgis-dialog__close" @click="handleClose">
               <svg-icon slot="prefix" icon-class="close" class="el-input__icon input-icon" />
             </span>
           </div>
           <div class="ccgis-dialog__body" :style="bodyStyle">
-            <component :is="config.name" v-if="config.name" ref="comp" :comp-data="config.data" />
+            <component :is="config.name" ref="comp" v-sow="config.name" :comp-data="config.data" />
           </div>
         </div>
       </div>
@@ -23,7 +22,7 @@
 
 <script>
 import { Directives, DialogType } from './mixins'
-import Bus, { Event } from '../../../utils/bus'
+// import Bus, { Event } from '../../../utils/bus'
 
 export default {
   name: 'GisDialog',
@@ -37,18 +36,16 @@ export default {
 
   data() {
     return {
-      name: 'username',
       visible: true,
       closed: false,
-      key: 0,
-      tp: {}
+      key: 0
     }
   },
   computed: {
     bodyStyle() {
       const style = {}
       const conf = {
-        ...this.compData.style
+        ...this.config.style
       }
       if (conf.margin) style.margin = conf.margin
       if (conf.border) style.border = conf.border
@@ -69,7 +66,7 @@ export default {
         opacity: 1,
         zIndex: 1,
         // display: 'none'
-        ...this.compData.style
+        ...this.config.style
       }
       if (conf.left) conf.left = conf.left + 'px'
       if (conf.top) conf.top = conf.top + 'px'
@@ -94,20 +91,18 @@ export default {
   },
 
   mounted() {
-    this.initType()
-    console.log(this.tp.header)
-    Bus.$on(Event.Window.show, data => {
-      this.visible = true
-    })
+    // Bus.$on(Event.Window.show, data => {
+    //   this.visible = true
+    // })
 
-    Bus.$on(Event.Window.hide, data => {
-      this.visible = false
-    })
+    // Bus.$on(Event.Window.hide, data => {
+    //   this.visible = false
+    // })
   },
 
   methods: {
     handleClose() {
-      this.compData.close()
+      this.config.close()
     },
     handleMouseDown() {}
   }

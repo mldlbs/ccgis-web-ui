@@ -2,9 +2,18 @@
 import { Event } from '../../../../utils/bus'
 
 const DialogType = {
+  data() {
+    return {
+      tp: {}
+    }
+  },
+  mounted() {
+    this.initType()
+    this.$forceUpdate()
+  },
   methods: {
     initType() {
-      const conf = this.compData.conf
+      const conf = this.config.conf
       if (!conf) return
 
       const type = conf.type

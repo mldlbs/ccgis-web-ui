@@ -1,4 +1,4 @@
-(context => context.keys().map(context))(require.context('@/assets/icons/svg', false, /\.svg$/))
+// (context => context.keys().map(context))(require.context('@/assets/icons/svg', false, /\.svg$/))
 
 // // import fs from 'fs'
 // import path from 'path'
@@ -39,4 +39,4 @@
 // (dir => dir.map(file => path.join(dir, file)))(readdirSync('@/assets/icons/svg').filter(file => file.endsWith('.svg')))
 // directoryPath => fs.readdirSync('@/assets/icons/svg').filter(file => file.endsWith('.svg')).map()
 
-// import 'virtual:svg-icons-register'
+import 'virtual:svg-icons-register'

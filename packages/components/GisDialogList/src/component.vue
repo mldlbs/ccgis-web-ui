@@ -2,10 +2,9 @@
   <div>
     <div v-for="(dia) in dialogs" :key="dia.id" class="ccgis-dialog__list">
       <Component
-        :is="dia.comp"
-        v-show="true"
+        :is="dia.component"
         :key="dia.id"
-        :comp-data="dia.compData"
+        :config="dia.config"
         @winActive="$handleWinActive"
         @winRemove="$handleWinRemove"
         @winDragStart="$winDragStart"
