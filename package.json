@@ -1,13 +1,10 @@
 {
   "name": "apps-bzgis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build-yf": "webpack",
-    "build-ui": "vue-cli-service build --target lib --name ccgis-web-ui ./packages/components/index.js",
-    "rollup": "rollup -c ./rollup.config.mjs",
+    "build": "yarn version && vite build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
