@@ -9,10 +9,10 @@ import { Event } from '../utils/bus'
 import GisDialog from './GisDialog'
 import GisDialogList from './GisDialogList'
 import GisSvgIcon from './GisSvgIcon'
-import GisFeature from './GisFeature'
+// import GisFeature from './GisFeature'
 
 const components = [
-  GisDialogList, GisSvgIcon, GisFeature
+  GisDialogList, GisSvgIcon
 ]
 const install = (Vue, options) => {
   components.forEach((it) => {
@@ -25,4 +25,4 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export const GisWebUi = { install, Event, GisDialog, GisDialogList, GisSvgIcon, GisFeature }
+export const GisWebUi = { install, Event, GisDialog, GisDialogList, GisSvgIcon }

@@ -1,9 +1,12 @@
 @import 'mixins/mixins';
 @import 'common/var';
+body {
+    margin: 0;
+    padding: 0;
+}
 
 @include b(wrapper) {
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
@@ -101,13 +104,18 @@
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
 
   @include e(list) {
-    pointer-events: fill;
+    pointer-events: none;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
   }
 
   @include e(header) {
     height: 30px;
     padding: 5px 10px;
     user-select: none;
+    pointer-events: fill;
   }
 
   @include e(title) {
@@ -120,6 +128,7 @@
     border-radius: 5px;
     border-color: #4b4b4b #000 #000 #4b4b4b;
     position: relative;
+    pointer-events: fill;
   }
 
   @include e(icon) {

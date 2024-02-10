@@ -3,6 +3,7 @@ node_modules/
 CesiumUnminified/
 # Cesium**
 dist/
+build/dist
 .git/
 .svn/
 npm-debug.log*

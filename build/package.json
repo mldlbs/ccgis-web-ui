@@ -1,0 +1,22 @@
+{
+  "name": "gis-web-ui",
+  "version": "1.0.0",
+  "description": "WebGis 基础组件开发",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/gis-web-ui.cjs.js",
+  "module": "./dist/gis-web-ui.es.js",
+  "exports": {
+    ".": {
+      "import": "./gis-web-ui.cjs.js",
+      "require": "./dist/gis-web-ui.umd.js"
+    }
+  },
+  "private": false,
+  "scripts": {
+  },
+  "author": "gaozhiqian <903288765@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

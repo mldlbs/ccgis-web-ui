@@ -16,15 +16,17 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'packages/components/index.js'),
       name: 'GisWebUi',
-      formats: ['es'],
-      fileName: (format) => `${name}.js`
+      formats: ['es', 'umd', 'cjs'],
+      fileName: (format) => `${name}.${format}.js`
     },
-    minify: false,
+    outDir: 'build/dist',
+    minify: 'terser',
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue'],
       output: {
+        assetFileNames: '[name][extname]',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
@@ -33,18 +35,16 @@ export default defineConfig({
       }
     },
     terserOptions: {
-      ecma: undefined,
+      ecma: 5,
       parse: {},
       compress: {},
       mangle: true, // Note `mangle.properties` is `false` by default.
       module: false,
-      // Deprecated
-      output: null,
       format: {
         beautify: false,
         ecma: 2015,
         // keep_numbers: true,
-        keep_quoted_props: true,
+        keep_quoted_props: false,
         max_line_len: 1024,
         preamble: ''
       },
@@ -55,7 +55,8 @@ export default defineConfig({
       keep_fnames: false,
       safari10: false
     },
-    cssMinify: true
+    cssMinify: true,
+    copyPublicDir: false
   },
   plugins: [
     vue2(), dts(), dynamicImportVars({
@@ -75,6 +76,9 @@ export default defineConfig({
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
   },
   css: {
+    modules: {
+      outputFileName: '[name].css'
+    },
     preprocessorOptions: {
       css: {},
       scss: {},
