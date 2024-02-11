@@ -30,7 +30,7 @@ export default {
       return isExternal(this.iconClass)
     },
     iconName() {
-      return `#icon-svg-${this.iconClass}`
+      return `#icon-${this.iconClass}`
     },
     svgClass() {
       if (this.className) {

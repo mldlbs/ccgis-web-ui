@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <div v-for="(dia) in dialogs" :key="dia.id" class="ccgis-dialog__list">
-      <Component
-        :is="dia.component"
-        :key="dia.id"
-        :config="dia.config"
-        @winActive="$handleWinActive"
-        @winRemove="$handleWinRemove"
-        @winDragStart="$winDragStart"
-        @winDragEnd="$winDragEnd"
-      />
+  <div style="position: absolute;">
+    <div class="ccgis-component">
+      <div v-for="(dia) in dialogs" :key="dia.id" class="ccgis-dialog__list">
+        <Component
+          :is="dia.component"
+          :key="dia.id"
+          :config="dia.config"
+          @winActive="$handleWinActive"
+          @winRemove="$handleWinRemove"
+          @winDragStart="$winDragStart"
+          @winDragEnd="$winDragEnd"
+        />
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -27,7 +30,7 @@ export default {
     const _this = this
     Bus.$on(Event.Window.created, dia => {
       if (dia.isDialog) {
-        const index = _this.dialogs.findIndex(it => it.type === dia.type)
+        const index = _this.dialogs.findIndex(it => it.id === dia.id)
         if (index > -1) return
         _this.dialogs.push(dia)
       }

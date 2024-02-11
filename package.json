@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "yarn version && vite build",
+    "build": "vite build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

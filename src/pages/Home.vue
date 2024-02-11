@@ -12,7 +12,7 @@
     </gaf-map-draggable> -->
     <!-- <GafMapBestPathAnalysis /> -->
     <!-- <gaf-map-buffer-analysis /> -->
-    <gis-dialog-list ref="GisDialogList" class="ccgis-component" />
+    <gis-dialog-list ref="GisDialogList" class="" />
   </div>
 </template>
 <script>
