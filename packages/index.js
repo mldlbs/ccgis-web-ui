@@ -15,16 +15,16 @@ import GisPipeBurst from './components/GisPipeBurst/index.vue'
 import GisBestPath from './components/GisBestPath/index.vue'
 import GisQuery from './components/GisQuery/index.vue'
 import GisFlyTo from './components/GisFlyTo/index.vue'
+import GisTest from './components/GisTest/index.vue'
 
 import { Event } from './utils/bus'
 
-const components = [GisSvgIcon, GisDialogList, GisDraw, GisContourLine, GisGradient, GisProjectionImage, GisFeature, GisHeatmap, GisPipeBurst, GisBestPath, GisQuery, GisFlyTo]
+const components = [GisTest, GisSvgIcon, GisDialogList, GisDraw, GisContourLine, GisGradient, GisProjectionImage, GisFeature, GisHeatmap, GisPipeBurst, GisBestPath, GisQuery, GisFlyTo]
 
 function install(Vue, options) {
   components.forEach(component => {
     Vue.component(component.name, component)
   })
-  GisDialog.root = options && options.root || ''
 }
 
 export { install, Event, GisDialog, GisSvgIcon, GisDialogList, GisDraw, GisContourLine, GisGradient, GisProjectionImage, GisFeature, GisHeatmap, GisPipeBurst, GisBestPath, GisQuery, GisFlyTo }

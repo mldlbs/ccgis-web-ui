@@ -9,6 +9,7 @@ class GisDialog {
     this.component = baseComponent
     this.type = this.config.name
     this.isDialog = true
+    this.isShow = this.config.show
     this.id = getGuid()
 
     this.component.install = function(Vue) {
@@ -24,13 +25,13 @@ class GisDialog {
     Bus.$emit(Event.Window.created, _this)
   }
 
-  show() {
-    Bus.$on(Event.Window.show, true)
-  }
+  //   show(isshow) {
+  //     Bus.$emit(Event.Window.show, isshow, this.component)
+  //   }
 
-  hide() {
-    Bus.$on(Event.Window.show, false)
-  }
+  //   hide() {
+  // Bus.$on(Event.Window.show, false)
+  //   }
 
   /**
    * json

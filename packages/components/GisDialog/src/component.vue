@@ -73,7 +73,11 @@ export default {
       if (conf.bottom) conf.bottom = conf.bottom + 'px'
       if (conf.right) conf.right = conf.right + 'px'
 
-      if (conf.width && (conf.width + '').indexOf('%') < 0) conf.width = conf.width + 'px'
+      if (conf.width && (conf.width + '').indexOf('%') < 0) {
+        conf.width = conf.width + 'px'
+      } else {
+        conf.width = `calc(100% - ${conf.left || '0px'})`
+      }
       if (conf.height && (conf.height + '').indexOf('%') < 0) {
         conf.height = conf.height + 'px'
       } else {
@@ -101,6 +105,9 @@ export default {
   },
 
   methods: {
+    show(visible) {
+      this.visible = visible
+    },
     handleClose() {
       this.config.close()
     },
