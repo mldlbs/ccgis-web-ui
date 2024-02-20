@@ -8,7 +8,7 @@ module.exports = {
   mode: 'production',
   // 入口，是一个对象
   entry: {
-    'YFGis': './packages/common/index.js'
+    'gis-core': './packages/common/index.js'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -75,14 +75,14 @@ module.exports = {
   output: {
     // 带五位hash值的js
     filename: './[name].js',
-    path: 'E:\\work\\code\\巴中项目\\cim-web-gis\\static\\webGL\\libs/yfgis', // path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build-lib/dist'), // path.resolve(__dirname, 'dist'),
     // library: {
     //   name: '[name]',
     //   type: 'umd'
     // },
-    library: 'YFGis',
+    library: 'CCGis',
     libraryTarget: 'umd',
-    libraryExport: 'YFGis',
+    libraryExport: 'CCGis',
     clean: {
       keep: 'package.json'
     }

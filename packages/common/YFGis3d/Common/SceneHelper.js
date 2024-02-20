@@ -2,11 +2,15 @@
 import EventHelper from './EventHelper'
 
 class Scene {
-  initEvent(viewer) {
-    this.eventHelper = new EventHelper(viewer)
+  constructor(config) {
+    this.viewer = config.viewer
+  }
+  initEvent() {
+    this.eventHelper = new EventHelper(this.viewer)
   }
 
-  switch2D(viewer) {
+  switch2D() {
+    const viewer = this.viewer
     const centerResult = viewer.camera.pickEllipsoid(
       new SuperMap3D.Cartesian2(
         viewer.canvas.clientWidth / 2,
@@ -32,7 +36,8 @@ class Scene {
 
   }
 
-  flyTo(viewer, target, pitch, range, complete) {
+  flyTo(target, pitch, range, complete) {
+    const viewer = this.viewer
     if (!target) return console.warn('flyTo: target is required')
     const isDegrees = target => 'longitude' in target && 'latitude' in target
     const isCartesian = target => 'x' in target && 'y' in target
@@ -55,4 +60,4 @@ class Scene {
   }
 }
 
-export default new Scene()
+export default Scene

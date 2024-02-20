@@ -1,7 +1,10 @@
 /*global */ // SuperMap SuperMap3D
 class Layer {
-  setInitParam(viewer, layers, config = {}) {
-    const _layers = viewer.scene.layers
+  constructor(config) {
+    this.viewer = config.viewer
+  }
+  setInitParam(layers, config = {}) {
+    const _layers = this.viewer.scene.layers
     _layers.layerQueue.forEach(ly => {
       if (!ly.layerInfo) return
       const id = layers.find(id => id === ly.layerInfo.resourceId)
@@ -13,8 +16,8 @@ class Layer {
     })
   }
 
-  setColorParam(viewer, layerid, config = {}) {
-    const _layers = viewer.scene.layers
+  setColorParam(layerid, config = {}) {
+    const _layers = this.viewer.scene.layers
     _layers.layerQueue.forEach(ly => {
       if (!ly.layerInfo) return
       if (layerid === ly.layerInfo.resourceId) {
@@ -25,7 +28,7 @@ class Layer {
       }
     })
 
-    const _imageryLayers = viewer.scene.imageryLayers._layers
+    const _imageryLayers = this.viewer.scene.imageryLayers._layers
 
     _imageryLayers.forEach(ly => {
       if (!ly.layerInfo) return
@@ -38,8 +41,8 @@ class Layer {
     })
   }
 
-  setAlpha(viewer, layers, alpha = 1) {
-    const _layers = viewer.scene.layers
+  setAlpha(layers, alpha = 1) {
+    const _layers = this.viewer.scene.layers
     _layers.layerQueue.forEach(ly => {
       if (!ly.layerInfo) return
       const id = layers.find(id => id === ly.layerInfo.resourceId)
@@ -49,7 +52,7 @@ class Layer {
     })
   }
   visibleByIds(viewer, layerid, ids) {
-    const _layers = viewer.scene.layers
+    const _layers = this.viewer.scene.layers
     _layers.layerQueue.forEach(ly => {
       console.log(ly, layerid, ids)
       if (!ly.layerInfo) return
@@ -61,5 +64,5 @@ class Layer {
   }
 }
 
-export default new Layer()
+export default Layer
 

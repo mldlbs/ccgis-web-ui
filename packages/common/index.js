@@ -1,40 +1,39 @@
+import { createInjector } from './injector'
 
-import DrawFeature from './YFGis3d/DrawFeature'
-import OrbitFeature from './YFGis3d/OrbitFeature'
-import EntityFeature from './YFGis3d/EntityFeature'
-import HeatmapFeature from './YFGis3d/HeatmapFeature'
-import PopupFeature from './YFGis3d/PopupFeature'
-import ContourLine from './YFGis3d/ContourLine'
-import Gradient from './YFGis3d/Gradient'
-import VideoShed from './YFGis3d/VideoShed'
-import QueryFeatures from './YFGis3d/QueryFeatures'
-import DynamicBuffer from './YFGis3d/DynamicBuffer'
-import BufferAnalyst from './YFGis3d/BufferAnalyst'
+// import DrawFeature from './YFGis3d/DrawFeature'
+// import OrbitFeature from './YFGis3d/OrbitFeature'
+// import EntityFeature from './YFGis3d/EntityFeature'
+// import HeatmapFeature from './YFGis3d/HeatmapFeature'
+// import PopupFeature from './YFGis3d/PopupFeature'
+// import ContourLine from './YFGis3d/ContourLine'
+// import Gradient from './YFGis3d/Gradient'
+// import VideoShed from './YFGis3d/VideoShed'
+// import QueryFeatures from './YFGis3d/QueryFeatures'
+// import DynamicBuffer from './YFGis3d/DynamicBuffer'
+// import BufferAnalyst from './YFGis3d/BufferAnalyst'
+// import PlanAction from './YFGis3d/PlanAction'
 
-import Event from './YFGis3d/Utils/event'
-import UUID from './YFGis3d/Utils/uuid'
-import Layer from './YFGis3d/Common/LayerHelper'
-import Scene from './YFGis3d/Common/SceneHelper'
-import { StaticParam } from './YFGis3d/Utils/config'
+class CCGis {
+  constructor(options, injector) {
+    // console.log('\n\n %c web3d %c version \n',
+    //   'color:#fff;border-radius:5px;background:#41b883;padding:5px 0;',
+    //   'color:#fff;border-radius:5px;background:#35495e;padding:5px 0;margin:0 2px')
+    this.injector = injector = injector || createInjector(options)
+    // API
+    this.get = injector.get
+    this.invoke = injector.invoke
+    // init
+    // indicate via event
+    // this.get('eventBus').fire('CCGIS.init')
+  }
 
-const YFGis = {
-  DrawFeature,
-  EntityFeature,
-  PopupFeature,
-  HeatmapFeature,
-  OrbitFeature,
-  ContourLine,
-  Gradient,
-  VideoShed,
-  QueryFeatures,
-  DynamicBuffer,
-  BufferAnalyst,
-  UUID, Event, Scene, Layer
+  destroy() {
+    // this.get('eventBus').fire('ccgis.destroy')
+  }
+
+    clear = function() {
+      // this.get('eventBus').fire('ccgis.clear')
+    }
 }
 
-StaticParam(YFGis)
-
-// module.exports = YFGis
-
-export { YFGis }
-
+export { CCGis }

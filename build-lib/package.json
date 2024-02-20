@@ -1,0 +1,22 @@
+{
+  "name": "gis-web-core",
+  "version": "1.0.3",
+  "description": "WebGis 基础开发库（基于SuperMap）",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/gis-core.js",
+  "module": "./dist/gis-core.js",
+  "exports": {
+    ".": {
+      "import": "./gis-core.js",
+      "require": "./gis-core.js"
+    }
+  },
+  "private": false,
+  "scripts": {},
+  "author": "gaozhiqian <903288765@qq.com>",
+  "license": "MIT",
+  "dependencies": {}
+}

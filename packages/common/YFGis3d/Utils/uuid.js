@@ -2,7 +2,8 @@ const _lut = []
 for (let i = 0; i < 256; i++) {
   _lut[i] = (i < 16 ? '0' : '') + i.toString(16)
 }
-const UUID = {
+
+class UUID {
   randomUUID() {
     const d0 = (Math.random() * 0xffffffff) | 0
     const d1 = (Math.random() * 0xffffffff) | 0
