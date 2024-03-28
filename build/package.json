@@ -1,6 +1,6 @@
 {
   "name": "gis-web-ui",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "WebGis 基础组件开发",
   "type": "module",
   "files": [
