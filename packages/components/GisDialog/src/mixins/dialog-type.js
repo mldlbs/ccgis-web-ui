@@ -19,31 +19,34 @@ const DialogType = {
       const type = conf.type
 
       switch (type) {
+        // 默认模式
         case Event.Dialog.type1: {
           this.tp.header = true
           this.tp.title = true
           this.tp.close = true
           break
         }
-
+        // 无标题模式
         case Event.Dialog.type2: {
           this.tp.header = false
           break
         }
-
+        // 无关闭按钮模式
         case Event.Dialog.type3: {
           this.tp.header = true
           this.tp.title = true
           this.tp.close = false
           break
         }
-
+        // 无标题模式
         case Event.Dialog.type4: {
           this.tp.header = false
           break
         }
-
         default:
+          this.tp.header = true
+          this.tp.title = true
+          this.tp.close = true
           break
       }
     }

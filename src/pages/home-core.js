@@ -1,4 +1,3 @@
-import { GisDialog } from '@gis'
 const initPanel = function() {
   const panelData = [
     {
@@ -10,54 +9,10 @@ const initPanel = function() {
         type: 'tp2'
       },
       style: {
-        width: 400,
-        height: 50,
-        top: 0,
-        left: 0,
-        margin: '0px',
-        border: 'none',
-        borderRadius: 0,
-        background: '#0e0e1499'
-      },
-      drag: {
-        enabled: true
-      }
-    },
-    {
-      title: '工具栏',
-      name: 'GisFeature',
-      show: false,
-      data: {},
-      conf: {
-        type: 'tp1'
-      },
-      style: {
-        width: 400,
-        height: 310,
+        width: 800,
+        height: 350,
         top: 100,
-        left: 0,
-        margin: '0px',
-        border: 'none',
-        borderRadius: 0,
-        background: '#0e0e1499'
-      },
-      drag: {
-        enabled: true
-      }
-    },
-    {
-      title: '工具栏2',
-      name: 'GisFeature',
-      show: false,
-      data: {},
-      conf: {
-        type: 'tp1'
-      },
-      style: {
-        width: 400,
-        height: 310,
-        top: 100,
-        left: 400,
+        left: 100,
         margin: '0px',
         border: 'none',
         borderRadius: 0,
@@ -68,7 +23,7 @@ const initPanel = function() {
       }
     }
   ]
-  GisDialog.createFromJson(panelData)
+  this.$Panel.createPanel(panelData)
 }
 
 export { initPanel }

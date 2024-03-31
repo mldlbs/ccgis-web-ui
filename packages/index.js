@@ -1,30 +1,40 @@
 
 /**
- * CIM接口开发
+ * Gis组件开发
  */
+// import Vue from 'vue'
+import './assets/styles/ccgis.scss'
+import Bus, { Event } from './utils/bus'
+import * as Utils from './utils'
+
 import GisDialog from './components/GisDialog'
 import GisDialogList from './components/GisDialogList'
+import GisEditor from './components/GisEditor'
 import GisSvgIcon from './components/GisSvgIcon'
-import GisDraw from './components/GisDraw/index.vue'
-import GisContourLine from './components/GisContourLine/index.vue'
-import GisGradient from './components/GisGradient/index.vue'
-import GisProjectionImage from './components/GisProjectionImage/index.vue'
-import GisFeature from './components/GisFeature/index.vue'
-import GisHeatmap from './components/GisHeatmap/index.vue'
-import GisPipeBurst from './components/GisPipeBurst/index.vue'
-import GisBestPath from './components/GisBestPath/index.vue'
-import GisQuery from './components/GisQuery/index.vue'
-import GisFlyTo from './components/GisFlyTo/index.vue'
-import GisTest from './components/GisTest/index.vue'
+import GisTest from './components/GisTest'
 
-import { Event } from './utils/bus'
-
-const components = [GisTest, GisSvgIcon, GisDialogList, GisDraw, GisContourLine, GisGradient, GisProjectionImage, GisFeature, GisHeatmap, GisPipeBurst, GisBestPath, GisQuery, GisFlyTo]
-
-function install(Vue, options) {
-  components.forEach(component => {
-    Vue.component(component.name, component)
+const components = [
+  GisDialogList, GisSvgIcon, GisEditor, GisTest
+]
+const install = (Vue, options) => {
+  components.forEach((it) => {
+    Vue.component(it.name, it)
   })
+  //   GisDialog.root = options && options.root || ''
+  // 全局方法挂载
+  Vue.prototype.parseTime = Utils.parseTime
+  Vue.prototype.resetForm = Utils.resetForm
+  Vue.prototype.addDateRange = Utils.addDateRange
+  Vue.prototype.selectDictLabel = Utils.selectDictLabel
+  Vue.prototype.handleTree = Utils.handleTree
+
+  Vue.prototype.$Bus = Bus
+  Vue.prototype.$Event = Event
+  Vue.prototype.$Panel = GisDialog
 }
 
-export { install, Event, GisDialog, GisSvgIcon, GisDialogList, GisDraw, GisContourLine, GisGradient, GisProjectionImage, GisFeature, GisHeatmap, GisPipeBurst, GisBestPath, GisQuery, GisFlyTo }
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
+
+export const GisWebUi = { install, Bus, Event, GisDialog, GisDialogList, GisEditor, GisSvgIcon }

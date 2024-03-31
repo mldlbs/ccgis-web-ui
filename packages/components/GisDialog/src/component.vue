@@ -11,12 +11,11 @@
             </span>
           </div>
           <div class="ccgis-dialog__body" :style="bodyStyle">
-            <component :is="config.name" ref="comp" v-sow="config.name" :comp-data="config.data" />
+            <component :is="config.name" v-show="config.name" ref="comp" :comp-data="config.data" />
           </div>
         </div>
       </div>
     </div>
-
   </transition>
 </template>
 
@@ -33,7 +32,6 @@ export default {
       default: null
     }
   },
-
   data() {
     return {
       visible: true,
@@ -94,16 +92,7 @@ export default {
     }
   },
 
-  mounted() {
-    // Bus.$on(Event.Window.show, data => {
-    //   this.visible = true
-    // })
-
-    // Bus.$on(Event.Window.hide, data => {
-    //   this.visible = false
-    // })
-  },
-
+  mounted() {},
   methods: {
     show(visible) {
       this.visible = visible

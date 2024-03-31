@@ -5,7 +5,7 @@ const Directives = {
         let draging = false
         if (!binding.value) return
         //
-        const dragElement = el.querySelector('.ccgis-dialog__header')
+        const dragElement = el.querySelector('.ccgis-editor__header')
         if (!dragElement) return
 
         const original = {

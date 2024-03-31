@@ -1,6 +1,6 @@
 <template>
   <div>
-    <gis-dialog-list ref="GisDialogList" class="" />
+    <gis-editor ref="GisEditor" class="" />
   </div>
 </template>
 <script>

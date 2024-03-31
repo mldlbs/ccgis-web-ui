@@ -25,18 +25,10 @@ class GisDialog {
     Bus.$emit(Event.Window.created, _this)
   }
 
-  //   show(isshow) {
-  //     Bus.$emit(Event.Window.show, isshow, this.component)
-  //   }
-
-  //   hide() {
-  // Bus.$on(Event.Window.show, false)
-  //   }
-
   /**
    * json
    */
-  static createFromJson(jsonArr) {
+  static createPanel(jsonArr) {
     jsonArr.forEach(cfg => new GisDialog(cfg))
   }
 }

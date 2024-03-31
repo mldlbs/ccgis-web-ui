@@ -8,33 +8,12 @@
 </template>
 
 <script>
-import Bus, { Event } from '../../utils/bus'
-import { CCGis } from '../../common/index'
 export default {
   name: 'GisTest',
   mounted() {
-    const ccgis = new CCGis({
-      viewer: window.viewer,
-      modules: []
-    })
-    console.log(ccgis)
-    const uuid = ccgis.get('uuid')
-    const event = ccgis.get('event')
-    const move = ccgis.get('move')
-    const action = ccgis.get('action')
-    console.log(uuid.randomUUID(), event, move, action)
   },
   methods: {
     addFeatures(type) {
-      switch (type) {
-        case 1001:
-          Bus.$emit(Event.Window.show, { type: 'GisFeature' })
-          break
-        case 1002:
-          break
-        default:
-          break
-      }
     }
   }
 }
