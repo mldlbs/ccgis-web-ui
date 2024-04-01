@@ -1,7 +1,7 @@
 <template>
   <transition name="dialog-fade">
     <div v-show="visible" v-drag="config.drag.enabled" class="ccgis-dialog" :style="style">
-      <div class="ccgis-dialog__wrapper">
+      <div class="ccgis-dialog__wrapper" @mouseenter="handleMove">
         <div :key="config.id" ref="dialog" role="dialog" aria-modal="true" :aria-label="config.title || 'dialog'">
           <div v-show="tp.header" class="ccgis-dialog__header">
             <span class="ccgis-dialog__icon"> <svg-icon slot="prefix" icon-class="资源" class="el-input__icon input-icon" /></span>
@@ -96,6 +96,17 @@ export default {
   methods: {
     show(visible) {
       this.visible = visible
+    },
+    handleMove() {
+      const winInfo = {
+        id: this.config.id,
+        name: this.config.name,
+        width: this.$el.style.width,
+        height: this.$el.style.height,
+        left: this.$el.style.left,
+        top: this.$el.style.top
+      }
+      this.$emit('handleMove', winInfo)
     },
     handleClose() {
       this.config.close()

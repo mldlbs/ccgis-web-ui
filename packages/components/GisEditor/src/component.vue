@@ -2,23 +2,18 @@
   <div style="position: absolute;">
     <div class="ccgis-component">
       <div v-for="(dia) in renderDialogs" :key="dia.id" class="ccgis-dialog__list">
-        <div class="ccgis-editor">
-          <div v-if="dia.id !== active.id || dia.id === hover.id" class="ccgis-editor__header">
-            <span class="ccgis-editor__title">预览</span>
-          </div>
-          <div class="ccgis-editor__body" :style="{height: dia.height + 'px'}">
-            <Component
-              :is="dia.component"
-              :key="dia.id"
-              :config="dia.config"
-              @winActive="$handleWinActive"
-              @winRemove="$handleWinRemove"
-              @winDragStart="$winDragStart"
-              @winDragEnd="$winDragEnd"
-            />
-          </div>
-        </div>
+        <Component
+          :is="dia.component"
+          :key="dia.id"
+          :config="dia.config"
+          @winActive="$handleWinActive"
+          @winRemove="$handleWinRemove"
+          @winDragStart="$winDragStart"
+          @winDragEnd="$winDragEnd"
+          @handleMove="$handleMove"
+        />
       </div>
+      <editor-module :enter-style="enterStyle" :active-style="activeStyle" />
     </div>
   </div>
 </template>
@@ -26,13 +21,17 @@
 <script>
 import Bus, { Event } from '../../../utils/bus'
 import Directives from './directives'
+import EditorModule from './editor'
 export default {
   name: 'GisEditor',
+  components: {
+    EditorModule
+  },
   mixins: [Directives],
   data() {
     return {
-      active: {},
-      hover: {},
+      activeStyle: {},
+      enterStyle: {},
       resize: {},
       dialogs: [], // 所有的弹窗
       renderDialogs: [] // 渲染的弹窗
@@ -69,16 +68,22 @@ export default {
     })
   },
   methods: {
-    $handleResize() {
+    $handleResize(winInfo) {
       this.resize = new Date().getTime()
+      console.log(winInfo)
     },
     $handleWinActive(winInfo) {
-      this.hover = winInfo
+      console.log(winInfo)
+    },
+    $handleMove(winInfo) {
+      // 鼠标移入面板参数
+      this.enterStyle = winInfo
     },
     $winDragStart(winInfo) {
+      console.log(winInfo)
     },
     $winDragEnd(winInfo) {
-      this.winInfo = winInfo
+      console.log(winInfo)
     },
     $handleWinRemove(winCompenent) {}
   }
