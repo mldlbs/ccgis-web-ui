@@ -133,10 +133,23 @@ body {
 @include b(editor) {
   display: flex;
   flex-direction: column; /* 垂直方向布局 */
+  position: absolute;
+  user-select: none;
+  z-index: 9999;
+  background-color: #4262456e;
+
+  @include e(enter) {
+    position: absolute;
+    background-color: #4262456e;
+    z-index: 9999;
+  }
 
   @include e(header) {
-    background-color: #f0f0f0;
-    padding: 10px;
+    background-color: #4262456e;
+    color: #ffffff;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 10px;
     box-sizing: border-box;
     order: -1; /* 放置在 Flex 容器的顶部 */
   }

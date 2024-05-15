@@ -1,20 +1,22 @@
 <template>
-  <div class="ccgis-editor">
-    <div v-if="enter.visible" class="ccgis-editor__enter">
-      <div class="ccgis-editor__body" :style="enter.style" @click="handleClick" />
+  <div v-drag="true" class="ccgis-editor" :style="active.style">
+    <div v-if="enter.visible" class="ccgis-editor__enter" :style="enter.style" @click="handleClick" @mouseleave="handleLeave">
+      <div class="ccgis-editor__body" />
     </div>
-    <div v-if="active.visible" class="ccgis-editor__active">
-      <div class="ccgis-editor__header" :style="active.header">
+    <div v-show="active.visible" class="ccgis-editor__active">
+      <div id="ccgis-editor-header" class="ccgis-editor__header">
         <span class="ccgis-editor__title">预览</span>
       </div>
-      <div class="ccgis-editor__body" :style="active.style" />
+      <div class="ccgis-editor__body" />
     </div>
   </div>
 </template>
 
 <script>
+import Directives from './directives'
 export default {
   name: 'EditorModule',
+  mixins: [Directives],
   props: {
     enterStyle: {
       type: Object,
@@ -27,6 +29,7 @@ export default {
   },
   data() {
     return {
+      draging: false,
       enter: {
         visible: false,
         style: {
@@ -46,17 +49,16 @@ export default {
   watch: {
     enterStyle: {
       handler(val) {
-        console.log('enterStyle', val)
+        if (this.draging) return
         if (val) {
+          if (this.active.id === val.id) return
+          this.enter.id = val.id
           this.enter.visible = true
           this.enter.style = {
-            position: 'absolute',
             top: val.top,
             left: val.left,
             width: val.width,
-            height: val.height,
-            background: '#74ab7a33',
-            zIndex: 9999
+            height: val.height
           }
         }
       },
@@ -67,19 +69,30 @@ export default {
   },
   methods: {
     handleClick() {
+      if (this.active.id === this.enter.id) return
+      this.active.id = this.enter.id
       this.active.visible = true
-      this.active.header = {
-        position: 'absolute',
+      this.active.style = {
         top: (Number(this.enter.style.top.replace('px', '')) - 36) + 'px',
         left: this.enter.style.left,
         width: this.enter.style.width,
-        height: 36 + 'px',
-        background: '#4262456e',
-        zIndex: 9999
-
+        height: (Number(this.enter.style.height.replace('px', '')) + 36) + 'px'
       }
-      this.active.style = this.enter.style
       this.enter.visible = false
+    },
+    handleLeave(winInfo) {
+      this.enter.visible = false
+    },
+    handleMove(winInfo) {
+      this.$emit('handleMove', {
+        ...winInfo,
+        id: this.active.id
+      })
+    //   this.active.style = {
+    //     ...this.active.style,
+    //     top: winInfo.top,
+    //     left: winInfo.left
+    //   }
     }
   }
 }

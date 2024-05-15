@@ -10,24 +10,23 @@
           @winRemove="$handleWinRemove"
           @winDragStart="$winDragStart"
           @winDragEnd="$winDragEnd"
-          @handleMove="$handleMove"
+          @handleEnter="$handleEnter"
         />
       </div>
-      <editor-module :enter-style="enterStyle" :active-style="activeStyle" />
+      <editor-module :enter-style="enterStyle" :active-style="activeStyle" @handleMove="$handleMove" />
     </div>
   </div>
 </template>
 
 <script>
 import Bus, { Event } from '../../../utils/bus'
-import Directives from './directives'
+
 import EditorModule from './editor'
 export default {
   name: 'GisEditor',
   components: {
     EditorModule
   },
-  mixins: [Directives],
   data() {
     return {
       activeStyle: {},
@@ -78,6 +77,17 @@ export default {
     $handleMove(winInfo) {
       // 鼠标移入面板参数
       this.enterStyle = winInfo
+      this.renderDialogs.forEach(dia => {
+        if (dia.config.id === winInfo.id) {
+          dia.config.style.top = Number(winInfo.top)
+          dia.config.style.left = Number(winInfo.left)
+        }
+      })
+    },
+    $handleEnter(winInfo) {
+      // 鼠标移入面板参数
+      this.enterStyle = winInfo
+      console.log(winInfo.id)
     },
     $winDragStart(winInfo) {
       console.log(winInfo)
